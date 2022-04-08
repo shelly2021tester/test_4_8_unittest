@@ -43,19 +43,6 @@ class LoginCases(unittest.TestCase):
         self.loginpage.input_password(password)
         self.loginpage.click_login()
         sleep(0.5)
-        self.assertEqual('我的地盘 - 禅道',self.driver.title,'登录页面不显示')
         self.loginpage.click_logout()
         loggers.info('有效的用户名和密码成功登录系统')
 
-
-    # @unittest.skip('不执行该测试用例')
-    @unittest.skipIf(system_version=='1.1',reason="只有版本号为1.2才执行")
-    def test_2(self):
-        '''
-        验证密码为空时登录失败
-        '''
-        self.loginpage.input_username('shelly')
-        self.loginpage.click_login()
-        sleep(0.5)
-        alert_login=self.driver.switch_to.alert
-        alert_login.accept()
